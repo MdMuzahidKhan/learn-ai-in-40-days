@@ -1,0 +1,134 @@
+SQL: SELECT 'Query 1: Select all customers from USA' AS info
+info
+Query 1: Select all customers from USA
+
+SQL: SELECT *
+FROM Customers
+WHERE country = 'USA'
+customer_id | customer_name | country | city
+1 | Alice | USA | New York
+3 | Charlie | USA | Chicago
+
+SQL: SELECT 'Query 2: Total orders per customer' AS info
+info
+Query 2: Total orders per customer
+
+SQL: SELECT c.customer_name, COUNT(o.order_id) AS total_orders
+FROM Customers c
+LEFT JOIN Orders o ON c.customer_id = o.customer_id
+GROUP BY c.customer_id, c.customer_name
+customer_name | total_orders
+Alice | 2
+Bob | 2
+Charlie | 0
+Diana | 1
+Ethan | 1
+Fatima | 0
+
+SQL: SELECT 'Query 3: Customer name and order date using JOIN' AS info
+info
+Query 3: Customer name and order date using JOIN
+
+SQL: SELECT c.customer_name, o.order_date
+FROM Orders o
+JOIN Customers c ON o.customer_id = c.customer_id
+customer_name | order_date
+Alice | 2024-01-10
+Bob | 2024-01-15
+Alice | 2024-02-05
+Diana | 2024-02-20
+Bob | 2024-03-01
+Ethan | 2024-03-10
+
+SQL: SELECT 'Query 4: Top 3 products by total quantity sold' AS info
+info
+Query 4: Top 3 products by total quantity sold
+
+SQL: SELECT p.product_name, SUM(oi.quantity) AS total_quantity_sold
+FROM OrderItems oi
+JOIN Products p ON oi.product_id = p.product_id
+GROUP BY p.product_id, p.product_name
+ORDER BY total_quantity_sold DESC
+LIMIT 3
+product_name | total_quantity_sold
+Pen | 14
+Notebook | 8
+Mouse | 6
+
+SQL: SELECT 'Query 5: Customers who have never placed an order' AS info
+info
+Query 5: Customers who have never placed an order
+
+SQL: SELECT c.customer_name
+FROM Customers c
+LEFT JOIN Orders o ON c.customer_id = o.customer_id
+WHERE o.order_id IS NULL
+customer_name
+Charlie
+Fatima
+
+SQL: SELECT 'Query 6: Total revenue per product' AS info
+info
+Query 6: Total revenue per product
+
+SQL: SELECT p.product_name, SUM(oi.quantity * p.price) AS total_revenue
+FROM OrderItems oi
+JOIN Products p ON oi.product_id = p.product_id
+GROUP BY p.product_id, p.product_name
+ORDER BY total_revenue DESC
+product_name | total_revenue
+Laptop | 1600.0
+Mouse | 120.0
+Headphones | 100.0
+Keyboard | 90.0
+Notebook | 40.0
+Pen | 28.0
+
+SQL: SELECT 'Query 7: Total spending per customer' AS info
+info
+Query 7: Total spending per customer
+
+SQL: SELECT c.customer_name, SUM(oi.quantity * p.price) AS total_spending
+FROM Customers c
+JOIN Orders o ON c.customer_id = o.customer_id
+JOIN OrderItems oi ON o.order_id = oi.order_id
+JOIN Products p ON oi.product_id = p.product_id
+GROUP BY c.customer_id, c.customer_name
+ORDER BY total_spending DESC
+customer_name | total_spending
+Alice | 890.0
+Bob | 853.0
+Ethan | 120.0
+Diana | 115.0
+
+SQL: SELECT 'Query 8: Orders placed in February 2024' AS info
+info
+Query 8: Orders placed in February 2024
+
+SQL: SELECT order_id, customer_id, order_date
+FROM Orders
+WHERE order_date BETWEEN '2024-02-01' AND '2024-02-29'
+order_id | customer_id | order_date
+103 | 1 | 2024-02-05
+104 | 4 | 2024-02-20
+
+SQL: SELECT 'Query 9: Average product price by category' AS info
+info
+Query 9: Average product price by category
+
+SQL: SELECT category, AVG(price) AS average_price
+FROM Products
+GROUP BY category
+category | average_price
+Electronics | 225.0
+Stationery | 3.5
+
+SQL: SELECT 'Query 10: Products never ordered' AS info
+info
+Query 10: Products never ordered
+
+SQL: SELECT p.product_name
+FROM Products p
+LEFT JOIN OrderItems oi ON p.product_id = oi.product_id
+WHERE oi.order_item_id IS NULL
+product_name

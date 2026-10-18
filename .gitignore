@@ -1,0 +1,58 @@
+.venv/
+__pycache__/
+*.pyc
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Local environments and generated reports
+venv/
+.mypy_cache/
+.ruff_cache/
+*.pyo
+.coverage.*
+coverage.xml
+
+# Local secrets and private keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+id_rsa
+id_ed25519
+id_ecdsa
+*.ppk
+
+# Generated databases and agent runtime state (keep SQL and sample inputs)
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+memory.json
+
+# Local backups, logs, and OS/editor artifacts
+.gitlab-ci.local-backup.yml
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Additional development/build artifacts
+.tox/
+.nox/
+.ipynb_checkpoints/
+node_modules/
+build/
+dist/
+*.egg-info/
+

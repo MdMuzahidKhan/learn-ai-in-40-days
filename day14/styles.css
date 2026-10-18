@@ -1,0 +1,225 @@
+:root {
+    --page-background: #f4f6fb;
+    --surface: #ffffff;
+    --accent: #1f3c88;
+    --accent-soft: #d9e2f2;
+    --text-primary: #1d2433;
+    --text-secondary: #5b6475;
+    --favorite: #d64045;
+    --border: #dce3ef;
+    --success: #147d64;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--page-background);
+    color: var(--text-primary);
+}
+
+.page-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-header {
+    background: linear-gradient(135deg, #132f72, var(--accent));
+    color: white;
+    padding: 32px 20px 28px;
+    text-align: center;
+}
+
+.page-header h1 {
+    margin: 0 0 10px;
+    font-size: 2rem;
+}
+
+.page-header p {
+    margin: 0 0 18px;
+    color: #e1e7f8;
+}
+
+.api-hint {
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+.search-input {
+    width: min(440px, 85vw);
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.catalog-content {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    padding: 28px 20px 36px;
+    flex: 1;
+}
+
+.control-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-bottom: 28px;
+}
+
+.panel-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(31, 60, 136, 0.08);
+}
+
+.panel-card h2 {
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+.stacked-form {
+    display: grid;
+    gap: 12px;
+}
+
+.stacked-form label {
+    display: grid;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.stacked-form input,
+.stacked-form select {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 1rem;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.action-button,
+.ghost-button {
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.action-button {
+    border: none;
+    background: var(--accent);
+    color: white;
+}
+
+.action-button:disabled {
+    opacity: 0.7;
+    cursor: progress;
+}
+
+.ghost-button {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-primary);
+}
+
+.panel-message {
+    margin-bottom: 0;
+    color: var(--success);
+}
+
+.status-message {
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.book-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(31, 60, 136, 0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+.cover-placeholder {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: bold;
+    letter-spacing: 0.04em;
+}
+
+.book-body {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.book-title {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.book-author,
+.book-meta {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.favorite-button {
+    margin-top: auto;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-primary);
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.favorite-button.is-favorite {
+    background: rgba(214, 64, 69, 0.12);
+    border-color: rgba(214, 64, 69, 0.4);
+    color: var(--favorite);
+}
+
+.page-footer {
+    background: var(--accent);
+    color: white;
+    text-align: center;
+    padding: 16px;
+}
+
+@media (max-width: 640px) {
+    .page-header h1 {
+        font-size: 1.6rem;
+    }
+}

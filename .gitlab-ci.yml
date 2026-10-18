@@ -1,0 +1,13 @@
+image: python:3.12
+
+stages:
+  - test
+
+run_tests:
+  stage: test
+  before_script:
+    - python --version
+    - pip install -r day07/requirements.txt
+  script:
+    - cd day07
+    - pytest -q tests

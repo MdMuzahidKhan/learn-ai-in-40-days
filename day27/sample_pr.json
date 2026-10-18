@@ -1,0 +1,30 @@
+{
+  "title": "Add duplicate-title validation for book creation",
+  "summary": "Prevent duplicate book titles from being created and add tests for the new validation.",
+  "changed_files": [
+    {
+      "path": "day07/app.py",
+      "area": "controller",
+      "change": "Route handler updated for create book flow.",
+      "notes": [
+        "Possible business logic leaking into controller"
+      ]
+    },
+    {
+      "path": "day07/service.py",
+      "area": "service",
+      "change": "Added duplicate-title validation before creating a book.",
+      "notes": [
+        "Main business rule change is here"
+      ]
+    },
+    {
+      "path": "day07/tests/test_app.py",
+      "area": "tests",
+      "change": "Added a test for duplicate-title failure.",
+      "notes": [
+        "No update-book duplicate-title test yet"
+      ]
+    }
+  ]
+}
